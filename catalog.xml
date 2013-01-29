@@ -1,0 +1,18 @@
+<catalog>
+	<item id="">
+		<name></name>
+		<description></description>
+		<price></price>
+		<quantity></quantity>
+		<image></image>
+		<salePrice></salePrice>
+	</item>
+	<item id="">
+		<name></name>
+		<description></description>
+		<price></price>
+		<quantity></quantity>
+		<image></image>
+		<salePrice></salePrice>
+	</item>
+</catalog>
