@@ -7,14 +7,17 @@
 		}
 
 		public function render(){
+			$catalogList = "";
 			foreach ($this->entityList as $entity) {
-				var_dump($entity->toArray());
 				ob_start();
 				$values = $entity->toArray();
 				include("templates/index/mainItem.tpl.php");
 				$content = ob_get_clean();
-				echo $content;
+				$catalogList .= $content;
 			}
+
+			include("templates/index/itemContainer.tpl.php");
+
 		}
 
 		public function itemDescriptionLimited($description, $length){

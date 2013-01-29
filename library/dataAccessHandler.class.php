@@ -14,7 +14,7 @@
 
 		private function connect(){
 			$dom = new DomDocument();
-			$dom->validateOnParse = true;
+			// $dom->validateOnParse = true;
 			$dom->load($this->filename);
 			return $dom;
 		}
@@ -113,7 +113,7 @@
 			foreach ($nodeList as $part) {
 				$tempArray[$part->nodeName] = $part->nodeValue;
 			}
-			$tempArray['id'] = $domItem->getAttribute('id');
+			$tempArray['id'] = $domNode->getAttribute('id');
 			
 			return $tempArray;
 		}

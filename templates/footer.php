@@ -1,9 +1,6 @@
 <?php
 	$ua = $_SERVER['HTTP_USER_AGENT'];
 ?>
-				</div>
-			</div>
-			<div class="clear"></div>
 			<div id="footer">
 				<div class="grid_4">
 					<h3>Browser &amp; IP</h3>
