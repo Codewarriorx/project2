@@ -1,5 +1,16 @@
+<?xml version="1.0" ?>
+<!DOCTYPE catalog [
+   <!ATTLIST item id ID #REQUIRED>
+   <!ELEMENT item (name,description,price,quantity,image,salePrice)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT description (#PCDATA)>
+   <!ELEMENT price (#PCDATA)>
+   <!ELEMENT quantity (#PCDATA)>
+   <!ELEMENT image (#PCDATA)>
+   <!ELEMENT salePrice (#PCDATA)>
+]>
 <catalog>
-	<item id="1">
+	<item id="0">
 		<name>Asus Transformer Infinity</name>
 		<description>As avid consumers of multimedia, we turned the Transformer Pad Infinity into a mobile home theater. With a 1920 x 1200 resolution Full HD screen, SonicMaster audio technology, Super IPS+ Panel and the most powerful NVIDIA Tegra 3 Quad-core CPU running @1.6 GHz, the Transformer Pad Infinity is everything you need to enjoy 1080p HD video playback while sharing with your friends on the go.</description>
 		<price>499.99</price>
@@ -7,7 +18,7 @@
 		<image>asus_transformer.jpg</image>
 		<salePrice>449.99</salePrice>
 	</item>
-	<item id="2">
+	<item id="1">
 		<name>Google Nexus 4 - 16gb</name>
 		<description>Nexus 4 is the new smartphone from Google. With cutting edge hardware, the latest version of Android, and the best Google apps -- Nexus 4 puts the world's information at your fingertips.</description>
 		<price>349.00</price>
@@ -15,7 +26,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>300.00</salePrice>
 	</item>
-	<item id="3">
+	<item id="2">
 		<name>Samsung Galaxy S3 - 16gb</name>
 		<description>Advanced. Intuitive. Simple. From the cutting edge technology inside to the stylish design that rests comfortably in your hand, the Galaxy S III makes everything you do easier. Share, multitask and interact with your device unlike anything you've experienced before and on a brilliant 4.8" HD Super AMOLED display.</description>
 		<price>549.99</price>
@@ -23,7 +34,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>499.99</salePrice>
 	</item>
-	<item id="4">
+	<item id="3">
 		<name>Asus Zenbook 14"</name>
 		<description>Despite a slender profile that tapers to 6mm and a low 1.9kg weight, ASUS ZENBOOK UX42VS features an internal optical drive for enjoying DVD movies on its brilliant 14" HD display. Available with an Intel Core i3, i5 or i7 ULV processor and 6GB memory, the UX42VS also features powerful NVIDIA GT 645M graphics with 1GB GDDR5 VRAM and up to 1TB high-performance hybrid hard drive storage.</description>
 		<price>1399.99</price>
@@ -31,7 +42,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>1299.99</salePrice>
 	</item>
-	<item id="5">
+	<item id="4">
 		<name>Google Nexus 7 - 32gb</name>
 		<description>With a stunning 7-inch display and all day battery life, Nexus 7 is the perfect travel companion. With up to 32GB of storage and the option to add mobile data, you can take even more of your favorite content from Google Play with you anywhere.</description>
 		<price>249.00</price>
@@ -39,7 +50,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>200.00</salePrice>
 	</item>
-	<item id="6">
+	<item id="5">
 		<name>Acer S7 13"</name>
 		<description>Available in white Gorilla Glass 2 or sleek aluminum, the Aspire S7 Series Ultrabook is pretty and smart. Its Full HD touch display beckons you to be social, get stuff done and have fun. The keyboard auto-illuminates.1 to the perfect glow for comfortable use in dim settings, while Acer TwinAir cooling makes this Ultrabook a pleasure to hold.</description>
 		<price>1399.99</price>
@@ -47,7 +58,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>1299.99</salePrice>
 	</item>
-	<item id="7">
+	<item id="6">
 		<name>Acer Aspire V3 14"</name>
 		<description>Breeze through multiple tasks with the power of the Aspire V3 Series and available dual hard drives.1 Enjoy superior performance and visuals with new-generation Intel or AMD processing and superb NVIDIA or AMD graphics. Whether you're editing movies and music or surfing the web, your experience remains smooth and brilliant.</description>
 		<price>699.99</price>
@@ -55,7 +66,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>649.99</salePrice>
 	</item>
-	<item id="8">
+	<item id="7">
 		<name>HTC One X - 16gb</name>
 		<description>Multitask and stay in touch when you're on the go with this HTC One X mobile phone that features 3G speed and built-in Wi-Fi capability for an easy Internet connection. The 8.0MP digital camera lets you capture special moments with friends and family.</description>
 		<price>599.99</price>
@@ -63,7 +74,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>549.99</salePrice>
 	</item>
-	<item id="9">
+	<item id="8">
 		<name>Samsung Galaxy S2</name>
 		<description>The Samsung Galaxy S II offers our largest and most beautiful screen in a slim device, and with 4G speeds, it delivers one of the fastest entertainment experiences running on T-Mobile's fast 4G network.</description>
 		<price>349.99</price>
@@ -71,7 +82,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>299.99</salePrice>
 	</item>
-	<item id="10">
+	<item id="9">
 		<name>Samsung Galaxy Note II</name>
 		<description>GALAXY Note II’s 5.5” HD Super AMOLED screen offers better clarity and a 16:9 screen ratio – perfecting all viewing experiences. The innovative design of the GALAXY Note II includes a bigger screen while maintaining a slim body to fit just right in your hand.</description>
 		<price>649.99</price>
@@ -79,7 +90,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>599.99</salePrice>
 	</item>
-	<item id="11">
+	<item id="10">
 		<name>Nokia Lumia 920</name>
 		<description>Windows Phone 8 streamlines your digital world with its intuitive and unified interface. Access and enjoy content across multiple screens with full SkyDrive integration and backup, with all your photos, music and files, completely in sync.</description>
 		<price>599.99</price>
@@ -87,7 +98,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>449.99</salePrice>
 	</item>
-	<item id="12">
+	<item id="11">
 		<name>HTC Droid DNA</name>
 		<description>DROID DNA by HTC impresses with an industry-leading, 5-inch, 1080p full-HD display — one of the first smartphones to feature a 1080p display. The amazing front and rear cameras capture every moment and the Snapdragon™ quad-core processor offers tremendously fast performance.</description>
 		<price>799.99</price>
@@ -95,7 +106,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>749.99</salePrice>
 	</item>
-	<item id="13">
+	<item id="12">
 		<name>Samsung Galaxy Tab 2 7"</name>
 		<description>The Samsung Galaxy Tab 2 offers all the features of its predecessor in a smaller and more stylish package. With a 7-inch HD screen, 8 gigabytes of memory and Android 4.0 software, the tablet offers a powerful performance that many comparable devices can't match.</description>
 		<price>199.99</price>
@@ -103,7 +114,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>149.99</salePrice>
 	</item>
-	<item id="14">
+	<item id="13">
 		<name>Google Nexus 10 - 32gb</name>
 		<description>Nexus 10 is the newest tablet from Google. With the world’s highest resolution tablet display, all new multi-user features, immersive HD content and the best Google apps -- Nexus 10 has something for everyone.</description>
 		<price>499.00</price>
@@ -111,7 +122,7 @@
 		<image>coming_soon.jpg</image>
 		<salePrice>449.00</salePrice>
 	</item>
-	<item id="15">
+	<item id="14">
 		<name>Lenovo IdeaPad Yoga 11</name>
 		<description>As flexible as you are. The IdeaPad Yoga is an ultraslim PC with a touchscreen that you can configure in multiple positions and even fold back 360. This Lenovo IdeaPad Yoga 11 is powered by Windows RT.</description>
 		<price>799.00</price>

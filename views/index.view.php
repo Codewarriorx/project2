@@ -8,9 +8,10 @@
 
 		public function render(){
 			foreach ($this->entityList as $entity) {
+				var_dump($entity->toArray());
 				ob_start();
 				$values = $entity->toArray();
-				include("../templates/index/mainItem.tpl.php");
+				include("templates/index/mainItem.tpl.php");
 				$content = ob_get_clean();
 				echo $content;
 			}

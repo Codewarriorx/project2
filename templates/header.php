@@ -50,3 +50,6 @@
 				</a>
 			</div>
 			<div class="clear"></div>
+			<div class="grid_12">
+				<div class="section mainSection">
+					<h2>Catalog</h2>

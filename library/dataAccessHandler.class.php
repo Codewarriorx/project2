@@ -8,8 +8,13 @@
 			$this->countItems();
 		}
 
+		public function __destruct(){
+
+		}
+
 		private function connect(){
 			$dom = new DomDocument();
+			$dom->validateOnParse = true;
 			$dom->load($this->filename);
 			return $dom;
 		}
@@ -67,12 +72,14 @@
 			$dom = $this->connect();
 			if(is_null($id)){ // get all items
 				$results = $dom->getElementsByTagName('item');
+				$results = $this->nodeListToArray($results);
 			}
 			else{ // get single item
 				$results = $dom->getElementById($id);
+				$results = $this->nodeToArray($results);
 			}
 			
-			return $this->returnArray($results);
+			return $results;
 		}
 
 		protected function getLastInsertID(){
@@ -97,10 +104,21 @@
 		protected function countItems(){
 			$dom = $this->connect();
 			$items = $dom->getElementsByTagName('item');
-			$this->itemCount = count($items);
+			$this->itemCount = $items->length;
 		}
 
-		private function returnArray($domList){
+		private function nodeToArray($domNode){
+			$nodeList = $domNode->childNodes;
+			$tempArray = array();
+			foreach ($nodeList as $part) {
+				$tempArray[$part->nodeName] = $part->nodeValue;
+			}
+			$tempArray['id'] = $domItem->getAttribute('id');
+			
+			return $tempArray;
+		}
+
+		private function nodeListToArray($domList){
 			$arrayList = array();
 			foreach ($domList as $domItem) { // goes through each item
 				$tempArray = array();
