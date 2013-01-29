@@ -9,13 +9,9 @@
 		}
 
 		private function connect(){
-			try{
-				$dom = new DomDocument();
-				return $dom->load($this->filename);
-			}
-			catch(PDOException $e){
-				echo "ERROR: ".$e->getMessage();
-			}
+			$dom = new DomDocument();
+			$dom->load($this->filename);
+			return $dom;
 		}
 
 		protected function updateXML($entity){ // provides interface for adding and updat

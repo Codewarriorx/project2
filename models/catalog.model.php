@@ -2,7 +2,7 @@
 	class CatalogModel extends dataAccessHandler{
 
 		public function __construct(){
-			parent::__construct("../catalog.xml");
+			parent::__construct("catalog.xml");
 		}
 
 		public function __destruct(){

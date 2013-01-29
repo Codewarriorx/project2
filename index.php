@@ -24,8 +24,6 @@
 	include ("templates/header.php");
 
 	// Create controller and execute actions
-	var_dump($_GET);
-	echo "test";
 	$loader = new loader($_GET);
 	$controller = $loader->createController();
 	$view = $controller->executeAction();

@@ -38,15 +38,15 @@
 			</div>
 			<div class="grid_7">
 				<ul class="nav">
-					<li class="<?php echo activePage('home'); ?>"><img src="img/glyphicons_020_home.png" alt="home icon"><a href="index.php">Home</a></li>
-					<li class="<?php echo activePage('cart'); ?>"><img src="img/glyphicons_202_shopping_cart.png" alt="shopping cart icon"><a href="cart.php">Cart</a></li>
-					<li class="<?php echo activePage('admin'); ?>"><img src="img/glyphicons_137_cogwheels.png" alt="admin icon"><a href="admin.php">Admin</a></li>
-					<li class="<?php echo activePage('about'); ?>"><img src="img/glyphicons_039_notes.png" alt="about icon"><a href="#">About</a></li>
+					<li class="<?php /*echo activePage('home');*/ ?>"><img src="img/glyphicons_020_home.png" alt="home icon"><a href="index.php">Home</a></li>
+					<li class="<?php /*echo activePage('cart');*/ ?>"><img src="img/glyphicons_202_shopping_cart.png" alt="shopping cart icon"><a href="cart.php">Cart</a></li>
+					<li class="<?php /*echo activePage('admin');*/ ?>"><img src="img/glyphicons_137_cogwheels.png" alt="admin icon"><a href="admin.php">Admin</a></li>
+					<li class="<?php /*echo activePage('about'); */?>"><img src="img/glyphicons_039_notes.png" alt="about icon"><a href="#">About</a></li>
 				</ul>
 
 				<a href="cart.php" class="cartCount">
 					<img src="img/glyphicons_202_shopping_cart.png" alt="shopping cart icon">
-					<span><? echo cartCount(); ?> Items</span>
+					<span><? /*echo cartCount();*/ ?> Items</span>
 				</a>
 			</div>
 			<div class="clear"></div>

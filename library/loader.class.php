@@ -6,7 +6,7 @@
 
 		public function __construct($urlValues){
 			$this->urlValues;
-echo "hey";
+
 			if($this->urlValues['controller'] == ""){ // Set controller
 				$this->controller = "home";
 			}
@@ -23,7 +23,6 @@ echo "hey";
 		}
 
 		public function createController(){
-			echo "in loader";
 			if(class_exists($this->controller)){ // Does the class exist?
 				$parents = class_parents($this->controller);
 
@@ -32,17 +31,14 @@ echo "hey";
 						return new $this->controller($this->action, $this->urlValues);
 					}
 					else{ // Bad method error
-						echo "bad";
 						return new Error("badUrl", $this->urlValues);
 					}
 				}
 				else{ // Bad controller error
-						echo "bad";
 					return new Error("badUrl", $this->urlValues);
 				}
 			}
 			else{ // Bad controller error
-						echo "bad";
 				return new Error("badUrl", $this->urlValues);
 			}
 		}

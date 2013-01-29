@@ -6,7 +6,6 @@
 		public function __construct($action, $urlValues){
 			$this->action = $action;
 			$this->urlValues = $urlValues;
-			echo " in controller";
 		}
 
 		public function executeAction(){
