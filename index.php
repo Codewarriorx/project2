@@ -10,9 +10,11 @@
 
 	// Require entity classes
 	require ("entities/catalogItem.entity.php");
+	require ("entities/saleItem.entity.php");
 
 	// Require model classes
 	require ("models/catalog.model.php");
+	require ("models/sales.model.php");
 
 	// Require controller classes
 	require ("controllers/home.controller.php");

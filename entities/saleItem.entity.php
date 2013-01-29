@@ -3,8 +3,9 @@
 		private $id;
 		private $itemID;
 
-		public function __construct($id = null){
+		public function __construct($itemID, $id = null){
 			$this->id = $id;
+			$this->itemID = $itemID;
 		}
 		
 		/**

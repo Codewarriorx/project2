@@ -1,0 +1,1 @@
+<li><a class="<? echo $classes; ?>" href="index.php?<?php echo $pageType; ?>=<?php echo $pageNumber; ?>"><?php echo $pageNumber; ?></a></li>

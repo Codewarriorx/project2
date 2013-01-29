@@ -1,0 +1,11 @@
+<sales>
+	<item id="sale_0">
+		<itemID>item_0</itemID>
+	</item>
+	<item id="sale_1">
+		<itemID>item_3</itemID>
+	</item>
+	<item id="sale_2">
+		<itemID>item_5</itemID>
+	</item>
+</sales>
