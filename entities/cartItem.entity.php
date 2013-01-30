@@ -4,11 +4,16 @@
 		private $itemID;
 		private $count; 
 
-		public function __construct($count, $id = null){
+		public function __construct($itemID, $count, $id = null){
+			$this->itemID = $itemID;
 			$this->id = $id;
 			$this->count = $count;
 		}
 		
+		public function toArray(){
+			return get_object_vars($this);
+		}
+
 		/**
 		 * Gets the value of id.
 		 *
@@ -48,7 +53,7 @@
 	    {
 	        $this->count = $count;
 	    }
-	    
+
 		/**
 		 * Gets the value of itemID.
 		 *

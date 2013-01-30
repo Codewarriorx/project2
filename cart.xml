@@ -1,3 +1,10 @@
+<?xml version="1.0" ?>
+<!DOCTYPE cart [
+	<!ELEMENT item (itemID,quantity)>
+	<!ATTLIST item id ID #REQUIRED>
+	<!ELEMENT itemID (#PCDATA)>
+	<!ELEMENT quantity (#PCDATA)>
+]>
 <cart>
 	<item id="cart_0">
 		<itemID>item_0</itemID>

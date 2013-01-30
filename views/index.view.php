@@ -34,7 +34,7 @@
 				$items .= $content;
 			}
 			
-			for ($pageNumber=1; $pageNumber < $paginationObject->pageCount(); $pageNumber++) {
+			for ($pageNumber=1; $pageNumber <= $paginationObject->pageCount(); $pageNumber++) {
 				$classes = "";
 				if($paginationObject->getCurrentPage() == $pageNumber){
 					$classes = "active";

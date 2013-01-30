@@ -7,6 +7,10 @@
 			$this->id = $id;
 			$this->itemID = $itemID;
 		}
+
+		public function toArray(){
+			return get_object_vars($this);
+		}
 		
 		/**
 		 * Gets the value of id.

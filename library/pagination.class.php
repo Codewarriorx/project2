@@ -5,6 +5,7 @@
 		public function __construct($numberOfItems, $itemsPerPage, $currentPage="1"){
 			$this->numberOfItems = $numberOfItems;
 			$this->itemsPerPage = $itemsPerPage;
+			$this->currentPage = $currentPage;
 		}
 
 		public function pageCount(){

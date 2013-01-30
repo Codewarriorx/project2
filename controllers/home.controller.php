@@ -1,18 +1,17 @@
 <?php
+	define("PAGE", "home");
 	class Home extends BaseController{
-		public $PAGE = 'Home';
-
 		public function index(){
 			// get page numbers for both sales and catalog
 
 			$catalogModel = new CatalogModel();
-			$mainPaginator = new Pagination($catalogModel->getItemCount(), 8);
+			$catalogPagination = new Pagination($catalogModel->getItemCount(), 8);
 			if(isset($urlValues['catPage'])){
 				$pageNumber = $urlValues['catPage'];
-				$bounds = $mainPaginator->paginate($pageNumber);
+				$bounds = $catalogPagination->paginate($pageNumber);
 			}
 			else{
-				$bounds = $mainPaginator->paginate();
+				$bounds = $catalogPagination->paginate();
 			}
 			$catalogListing = $catalogModel->getListing($bounds['lowerBound'], $bounds['upperBound']);
 
@@ -25,9 +24,10 @@
 			else{
 				$bounds = $salesPaginator->paginate();
 			}
-			$salesListing = $salesModel->getListing($bounds['lowerBound'], $bounds['upperBound']);
+			$saleEntities = $salesModel->getListing($bounds['lowerBound'], $bounds['upperBound']);
+			$salesListing = $catalogModel->getCatalogItems($saleEntities);
 
-			return new IndexView($catalogListing, $catalogPagination, $salesListing, $salePagination);
+			return new IndexView($catalogListing, $catalogPagination, $salesListing, $salesPaginator);
 		}
 	}
 ?>
