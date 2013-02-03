@@ -2,26 +2,26 @@
 	define("PAGE", "home");
 	class Home extends BaseController{
 		public function index(){
-			// get page numbers for both sales and catalog
-
 			$catalogModel = new CatalogModel();
-			$catalogPagination = new Pagination($catalogModel->getItemCount(), 8);
-			if(isset($urlValues['catPage'])){
-				$pageNumber = $urlValues['catPage'];
+			if(isset($_GET['catPage'])){
+				$catalogPagination = new Pagination($catalogModel->getItemCount(), 8, $_GET['catPage']);
+				$pageNumber = $_GET['catPage'];
 				$bounds = $catalogPagination->paginate($pageNumber);
 			}
 			else{
+				$catalogPagination = new Pagination($catalogModel->getItemCount(), 8);
 				$bounds = $catalogPagination->paginate();
 			}
 			$catalogListing = $catalogModel->getListing($bounds['lowerBound'], $bounds['upperBound']);
 
 			$salesModel = new SalesModel();
-			$salesPaginator = new Pagination($salesModel->getItemCount(), 4);
-			if(isset($urlValues['salePage'])){
-				$pageNumber = $urlValues['salePage'];
+			if(isset($_GET['salePage'])){
+				$salesPaginator = new Pagination($salesModel->getItemCount(), 4, $_GET['salePage']);
+				$pageNumber = $_GET['salePage'];
 				$bounds = $salesPaginator->paginate($pageNumber);
 			}
 			else{
+				$salesPaginator = new Pagination($salesModel->getItemCount(), 4);
 				$bounds = $salesPaginator->paginate();
 			}
 			$saleEntities = $salesModel->getListing($bounds['lowerBound'], $bounds['upperBound']);

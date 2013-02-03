@@ -1,8 +1,7 @@
-ErrorDocument 404 /539/project2/404.php
+ErrorDocument 404 404.php
 Options +FollowSymLinks
 RewriteEngine on
-
+RewriteBase /mjl7592/539/project2
+RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?controller=$1&action=$2&id=$3 [QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?controller=$1&action=$2&id=$3 [NC,L]

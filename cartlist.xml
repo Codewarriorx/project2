@@ -10,4 +10,8 @@
 		<itemID>item_0</itemID>
 		<quantity>2</quantity>
 	</item>
+	<item id="cart_1">
+		<itemID>item_3</itemID>
+		<quantity>1</quantity>
+	</item>
 </cart>

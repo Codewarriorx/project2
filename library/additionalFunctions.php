@@ -1,5 +1,5 @@
 <?php
-	$password = 'project1';
+	$password = 'project2';
 
 	function activePage($page='home'){
 		
@@ -7,4 +7,11 @@
 			return "active";
 		}
 	}
+
+	/*
+	*	This is to recreate lcfirst function that is available in newer versions of php
+	*/
+	function lcfirst( $str ){
+		return (string)(strtolower(substr($str,0,1)).substr($str,1));
+	} 
 ?>

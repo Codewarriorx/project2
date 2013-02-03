@@ -2,17 +2,17 @@
 	class CartModel extends dataAccessHandler{
 
 		public function __construct(){
-			parent::__construct("sales.xml");
+			parent::__construct("cartlist.xml");
 		}
 
 		public function __destruct(){
 			parent::__destruct();
 		}
 
-		public function getListing($lowerBound, $upperBound){
+		public function getAll(){
 			$listing = array();
-			for ($i=$lowerBound; $i < $upperBound; $i++) { 
-				$item = $this->read("sale_$i");
+			for ($i=0; $i < $this->getItemCount(); $i++) { 
+				$item = $this->read("cart_$i");
 				$tempEntity = new CartItem($item['itemID'], $item['quantity'], $item['id']);
 				array_push($listing, $tempEntity);
 			}

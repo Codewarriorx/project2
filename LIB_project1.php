@@ -38,55 +38,55 @@
 	// 	}
 	// }
 
-	function createItem($itemID, $saleFlag){
-		global $itemName, $description, $price, $stock, $imgName, $salesPrice;
-		$itemPrice = "";
+	// function createItem($itemID, $saleFlag){
+	// 	global $itemName, $description, $price, $stock, $imgName, $salesPrice;
+	// 	$itemPrice = "";
 
-		if($saleFlag){
-			$itemPrice = $salesPrice[$itemID];
-		}
-		else{
-			$itemPrice = $price[$itemID];
-		}
+	// 	if($saleFlag){
+	// 		$itemPrice = $salesPrice[$itemID];
+	// 	}
+	// 	else{
+	// 		$itemPrice = $price[$itemID];
+	// 	}
 
-		return "<a href=\"itempage.php?itemID=$itemID\">
-					<div class=\"item\">
-						<img src=\"img/$imgName[$itemID]\" alt=\"".str_replace('"', '', $itemName[$itemID])."\" >
-						<div class=\"price\">\$".number_format($itemPrice, 2, '.', '')."&nbsp;&nbsp;|&nbsp;&nbsp;$stock[$itemID]</div>
-						<div class=\"caption\">
-							<h4>".html_entity_decode($itemName[$itemID])."</h4>
-							<p>".html_entity_decode(itemDescriptionLimited($itemID, 80))."</p>
-							<form method=\"post\" action=\"cart.php\">
-								<input type=\"hidden\" value=\"$itemID\" name=\"itemID\">
-								<input class=\"button addToCart\" type=\"submit\" value=\"Add To Cart\" name=\"add\" >
-							</form>
-						</div>
-					</div>
-				</a>";
-	}
+	// 	return "<a href=\"itempage.php?itemID=$itemID\">
+	// 				<div class=\"item\">
+	// 					<img src=\"img/$imgName[$itemID]\" alt=\"".str_replace('"', '', $itemName[$itemID])."\" >
+	// 					<div class=\"price\">\$".number_format($itemPrice, 2, '.', '')."&nbsp;&nbsp;|&nbsp;&nbsp;$stock[$itemID]</div>
+	// 					<div class=\"caption\">
+	// 						<h4>".html_entity_decode($itemName[$itemID])."</h4>
+	// 						<p>".html_entity_decode(itemDescriptionLimited($itemID, 80))."</p>
+	// 						<form method=\"post\" action=\"cart.php\">
+	// 							<input type=\"hidden\" value=\"$itemID\" name=\"itemID\">
+	// 							<input class=\"button addToCart\" type=\"submit\" value=\"Add To Cart\" name=\"add\" >
+	// 						</form>
+	// 					</div>
+	// 				</div>
+	// 			</a>";
+	// }
 
-	function createItemPage($itemID){
-		global $itemName, $description, $price, $stock, $imgName, $salesPrice;
+	// function createItemPage($itemID){
+	// 	global $itemName, $description, $price, $stock, $imgName, $salesPrice;
 
-		return "<h2>".html_entity_decode($itemName[$itemID])."</h2>
-				<span class=\"stock\">Stock: $stock[$itemID]</span>
-				<p>".html_entity_decode($description[$itemID])."</p>
-				<span class=\"priceBar\">\$".number_format($price[$itemID], 2, '.', '')."</span>
-				<form method=\"post\" action=\"cart.php\">
-					<input type=\"hidden\" value=\"$itemID\" name=\"itemID\" >
-					<span class=\"quantity\">Quantity:<input type=\"number\" name=\"quantity\" value=\"\" placeholder=\"1\"></span>
-					<input class=\"button addToCart\" type=\"submit\" value=\"Add To Cart\" name=\"add\" >
-				</form>";
-	}
+	// 	return "<h2>".html_entity_decode($itemName[$itemID])."</h2>
+	// 			<span class=\"stock\">Stock: $stock[$itemID]</span>
+	// 			<p>".html_entity_decode($description[$itemID])."</p>
+	// 			<span class=\"priceBar\">\$".number_format($price[$itemID], 2, '.', '')."</span>
+	// 			<form method=\"post\" action=\"cart.php\">
+	// 				<input type=\"hidden\" value=\"$itemID\" name=\"itemID\" >
+	// 				<span class=\"quantity\">Quantity:<input type=\"number\" name=\"quantity\" value=\"\" placeholder=\"1\"></span>
+	// 				<input class=\"button addToCart\" type=\"submit\" value=\"Add To Cart\" name=\"add\" >
+	// 			</form>";
+	// }
 
-	function itemPageGallery($itemID){
-		global $itemName, $imgName;
-		return "<img class=\"imgMain\" src=\"img/$imgName[$itemID]\" alt=\"".str_replace('"', '', $itemName[$itemID])."\">
+	// function itemPageGallery($itemID){
+	// 	global $itemName, $imgName;
+	// 	return "<img class=\"imgMain\" src=\"img/$imgName[$itemID]\" alt=\"".str_replace('"', '', $itemName[$itemID])."\">
 		
-				<img class=\"imgSub\" src=\"img/$imgName[$itemID]\" alt=\"".str_replace('"', '', $itemName[$itemID])."\">
-				<img class=\"imgSub\" src=\"img/coming_soon.jpg\" alt=\"Coming soon!\">
-				<img class=\"imgSub\" src=\"img/coming_soon.jpg\" alt=\"Coming soon!\">";
-	}
+	// 			<img class=\"imgSub\" src=\"img/$imgName[$itemID]\" alt=\"".str_replace('"', '', $itemName[$itemID])."\">
+	// 			<img class=\"imgSub\" src=\"img/coming_soon.jpg\" alt=\"Coming soon!\">
+	// 			<img class=\"imgSub\" src=\"img/coming_soon.jpg\" alt=\"Coming soon!\">";
+	// }
 
 	function cartTotal(){
 		global $cartList, $cartCount;
@@ -100,57 +100,57 @@
 		return $total;
 	}
 
-	function cartTax($total){
-		return $total * 0.08;
-	}
+	// function cartTax($total){
+	// 	return $total * 0.08;
+	// }
 
-	function activePage($page='home'){
-		global $PAGE;
+	// function activePage($page='home'){
+	// 	global $PAGE;
 		
-		if($page == $PAGE){
-			return "active";
-		}
-	}
+	// 	if($page == $PAGE){
+	// 		return "active";
+	// 	}
+	// }
 
-	function cartItemSum($cartID){
-		global $cartList, $cartCount;
-		global $price, $salesPrice;
+	// function cartItemSum($cartID){
+	// 	global $cartList, $cartCount;
+	// 	global $price, $salesPrice;
 
-		$itemID = $cartList[$cartID];
-		$num = $cartCount[$cartID];
-		$itemSum = $num * $price[$itemID];
-		return $itemSum;
-	}
+	// 	$itemID = $cartList[$cartID];
+	// 	$num = $cartCount[$cartID];
+	// 	$itemSum = $num * $price[$itemID];
+	// 	return $itemSum;
+	// }
 
-	function cartList($cartID){
-		global $cartList, $cartCount;
-		global $itemName, $description, $price, $stock, $imgName, $salesPrice;
+	// function cartList($cartID){
+	// 	global $cartList, $cartCount;
+	// 	global $itemName, $description, $price, $stock, $imgName, $salesPrice;
 
-		$itemID = $cartList[$cartID];
-		$num = $cartCount[$cartID];
+	// 	$itemID = $cartList[$cartID];
+	// 	$num = $cartCount[$cartID];
 
-		return "<tr class=\"cartItem\">
-					<td><img src=\"img/$imgName[$itemID]\" alt=\"".str_replace('"', '', $itemName[$itemID])."\"></td>
-					<td>".html_entity_decode($itemName[$itemID])."<input type=\"hidden\" value=\"$itemID\" name=\"itemID\"></td>
-					<td>
-						<form method=\"post\" action=\"cart.php\">
-						<input type=\"hidden\" value=\"$itemID\" name=\"itemID\">
-						<button class=\"iconButton\" type=\"submit\" name=\"remove\"><img class=\"icon\" src=\"img/glyphicons_016_bin.png\" alt=\"bin icon\"></button>
-						</form>
-					</td>
-					<td><input type=\"number\" name=\"quantity\" value=\"$num\" placeholder=\"1\"></td>
-					<td>\$".number_format($price[$itemID], 2, '.', '')."</td>
-					<td>\$".number_format(cartItemSum($cartID), 2, '.', '')."</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-				</tr>";
-	}
+	// 	return "<tr class=\"cartItem\">
+	// 				<td><img src=\"img/$imgName[$itemID]\" alt=\"".str_replace('"', '', $itemName[$itemID])."\"></td>
+	// 				<td>".html_entity_decode($itemName[$itemID])."<input type=\"hidden\" value=\"$itemID\" name=\"itemID\"></td>
+	// 				<td>
+	// 					<form method=\"post\" action=\"cart.php\">
+	// 					<input type=\"hidden\" value=\"$itemID\" name=\"itemID\">
+	// 					<button class=\"iconButton\" type=\"submit\" name=\"remove\"><img class=\"icon\" src=\"img/glyphicons_016_bin.png\" alt=\"bin icon\"></button>
+	// 					</form>
+	// 				</td>
+	// 				<td><input type=\"number\" name=\"quantity\" value=\"$num\" placeholder=\"1\"></td>
+	// 				<td>\$".number_format($price[$itemID], 2, '.', '')."</td>
+	// 				<td>\$".number_format(cartItemSum($cartID), 2, '.', '')."</td>
+	// 			</tr>
+	// 			<tr>
+	// 				<td>&nbsp;</td>
+	// 				<td>&nbsp;</td>
+	// 				<td>&nbsp;</td>
+	// 				<td>&nbsp;</td>
+	// 				<td>&nbsp;</td>
+	// 				<td>&nbsp;</td>
+	// 			</tr>";
+	// }
 
 	function itemOptions(){
 		global $itemName, $description, $price, $stock, $imgName, $salesPrice;

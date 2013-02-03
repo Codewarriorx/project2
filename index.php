@@ -2,35 +2,30 @@
 	error_reporting(E_ALL);
 	ini_set( 'display_errors','1'); 
 
+
+	require ("library/loader.class.php");
+	/* nullify any existing autoloads */
+    spl_autoload_register(null, false);
+
+    /* specify extensions that may be loaded */
+    spl_autoload_extensions('.php, .class.php, .model.php, .entity.php, view.php, controller.php');
+
+    /* register the loader functions */
+    spl_autoload_register('Loader::libLoader');
+    spl_autoload_register('Loader::entityLoader');
+    spl_autoload_register('Loader::modelLoader');
+    spl_autoload_register('Loader::controllerLoader');
+    spl_autoload_register('Loader::viewLoader');
+
 	// Get library classes
 	require ("library/additionalFunctions.php");
-	require ("library/loader.class.php");
-	require ("library/dataAccessHandler.class.php");
-	require ("library/pagination.class.php");
-	require ("library/baseController.class.php");
-
-	// Require entity classes
-	require ("entities/catalogItem.entity.php");
-	require ("entities/saleItem.entity.php");
-	require ("entities/cartItem.entity.php");
-
-	// Require model classes
-	require ("models/catalog.model.php");
-	require ("models/sales.model.php");
-	require ("models/cart.model.php");
-
-	// Require controller classes
-	require ("controllers/home.controller.php");
-
-	// Require controller classes
-	require ("views/index.view.php");
-
-	// Include header
-	include ("templates/header.php");
 
 	// Create controller and execute actions
 	$loader = new loader($_GET);
 	$controller = $loader->createController();
+
+	// Include header
+	include ("templates/header.php");
 	$view = $controller->executeAction();
 	$view->render();
 

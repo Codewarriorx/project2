@@ -5,7 +5,7 @@
 		private $urlValues;
 
 		public function __construct($urlValues){
-			$this->urlValues;
+			$this->urlValues = $urlValues;
 
 			if($this->urlValues['controller'] == ""){ // Set controller
 				$this->controller = "home";
@@ -41,6 +41,61 @@
 			else{ // Bad controller error
 				return new Error("badUrl", $this->urlValues);
 			}
+		}
+
+		public static function libLoader($class){
+		    $filename = lcfirst($class) . '.class.php';
+		    $file ='library/' . $filename;
+		    if (!file_exists($file)){
+		        return false;
+		    }
+		    include $file;
+		}
+
+		public static function entityLoader($class){
+		    $filename = lcfirst($class) . '.entity.php';
+		    $file ='entities/' . $filename;
+		    if (!file_exists($file)){
+		        return false;
+		    }
+		    include $file;
+		}
+
+		public static function modelLoader($class){
+			$class = str_replace('Model', '', $class);
+		    $filename = lcfirst($class) . '.model.php';
+		    $file ='models/' . $filename;
+		    if (!file_exists($file)){
+		        return false;
+		    }
+		    include $file;
+		}
+
+		public static function controllerLoader($class){
+		    $filename = lcfirst($class) . '.controller.php';
+		    $file ='controllers/' . $filename;
+		    if (!file_exists($file)){
+		        return false;
+		    }
+		    include $file;
+		}
+
+		public static function viewLoader($class){
+			$controller = "";
+			if(!isset($_GET['controller'])){ // Set controller
+				$controller = "home";
+			}
+			else{
+				$controller = $_GET['controller'];
+			}
+
+			$class = str_replace('View', '', $class);
+		    $filename = lcfirst($class) . '.view.php';
+		    $file ='views/' . $controller . '/' . $filename;
+		    if (!file_exists($file)){
+		        return false;
+		    }
+		    include $file;
 		}
 	}
 ?>

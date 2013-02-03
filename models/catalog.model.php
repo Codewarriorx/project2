@@ -35,5 +35,11 @@
 			}
 			return $listing;
 		}
+
+		public function getItem($partialID){
+			$itemID = "item_".$partialID;
+			$item = $this->read($itemID);
+			return new CatalogItem($item['name'], $item['description'], $item['price'], $item['quantity'], $item['image'], $item['salePrice'], $item['id']);
+		}
 	}
 ?>
