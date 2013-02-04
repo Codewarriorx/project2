@@ -25,10 +25,13 @@
 	// Create controller and execute actions
 	$loader = new loader($_GET);
 	$controller = $loader->createController();
+	$view = $controller->executeAction();
+
+	$cartModel = new CartModel();
+	define('CARTCOUNT', $cartModel->getItemCount());
 
 	// Include header
 	include ("templates/header.php");
-	$view = $controller->executeAction();
 	$view->render();
 
 	// Include footer

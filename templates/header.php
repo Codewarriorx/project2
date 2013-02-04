@@ -44,9 +44,9 @@
 					<li class="<?php echo activePage('about'); ?>"><img src="img/glyphicons_039_notes.png" alt="about icon"><a href="#">About</a></li>
 				</ul>
 
-				<a href="cart.php" class="cartCount">
+				<a href="cart" class="cartCount">
 					<img src="img/glyphicons_202_shopping_cart.png" alt="shopping cart icon">
-					<span><? /*echo cartCount();*/ ?> Items</span>
+					<span><? echo CARTCOUNT; ?> Items</span>
 				</a>
 			</div>
 			<div class="clear"></div>
