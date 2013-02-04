@@ -88,17 +88,17 @@
 	// 			<img class=\"imgSub\" src=\"img/coming_soon.jpg\" alt=\"Coming soon!\">";
 	// }
 
-	function cartTotal(){
-		global $cartList, $cartCount;
-		global $price, $salesPrice;
-		$total = 0;
+	// function cartTotal(){
+	// 	global $cartList, $cartCount;
+	// 	global $price, $salesPrice;
+	// 	$total = 0;
 
-		for ($i=0; $i < cartCount(); $i++) { 
-			$total += cartItemSum($i);
-		}
+	// 	for ($i=0; $i < cartCount(); $i++) { 
+	// 		$total += cartItemSum($i);
+	// 	}
 
-		return $total;
-	}
+	// 	return $total;
+	// }
 
 	// function cartTax($total){
 	// 	return $total * 0.08;

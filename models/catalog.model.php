@@ -54,7 +54,7 @@
 
 		public function updateCatalog($name, $description, $price, $quantity, $image, $salePrice, $id = null){
 			$catalogEntity = new CatalogItem($name, $description, $price, $quantity, $image, $salePrice, $id);
-			$this->updateXML($catalogEntity);
+			return $this->updateXML($catalogEntity);
 		}
 	}
 ?>

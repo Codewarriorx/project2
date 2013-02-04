@@ -7,7 +7,7 @@
 	<form method="POST" action="admin/save">
 		<div class="grid_6 alpha grid_together">
 			<div class="adminForm">
-				<input type="hidden" name="itemID" value="<? echo $values['itemID']; ?>"/>
+				<input type="hidden" name="id" value="<? echo $values['id']; ?>"/>
 				<span class="inputLabel<? echo $this->errorCheck('name'); ?>">Name:</span><span class="inputField"><input type="text" name="name" value="<? echo $values['name']; ?>" placeholder="Product Name"></span>
 				<span class="inputLabel<? echo $this->errorCheck('description'); ?>">Description:</span><span class="inputField"><textarea name="description" placeholder="Product Description"><? echo $values['description']; ?></textarea></span>
 				<span class="inputLabel<? echo $this->errorCheck('price'); ?>">Price:</span><span class="inputField"><input type="number" name="price" value="<? echo $values['price']; ?>" placeholder="Product Price"></span>

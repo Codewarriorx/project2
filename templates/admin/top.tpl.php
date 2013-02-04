@@ -10,7 +10,7 @@
 	<div class="adminControlLeft">
 		<h3>Choose an item to edit:</h3>
 		<form method="POST" action="admin/edit">
-			<select name="itemID">
+			<select name="id">
 				<?php echo $itemOptions; ?>
 			</select>
 			<input class="button purchase" type="submit" value="Select" name="edit">

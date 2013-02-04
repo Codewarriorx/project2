@@ -39,6 +39,7 @@
 				$item->appendChild($salePrice);
 
 				if(!is_null( $entity->getID() )){ // update
+					echo $entity->getID();
 					$oldItem = $dom->getElementById($entity->getID());
 					$item->setAttribute( 'id', $entity->getID() );
 					$dom->getElementsByTagName('catalog')->item(0)->replaceChild($item, $oldItem);
@@ -97,9 +98,10 @@
 			}
 			
 			$dom->save($this->filename);
+			$lastInsertID = $this->getItemCount();
 			$this->countItems();
 
-			return $this->getLastInsertID();
+			return $lastInsertID;
 		}
 
 		protected function itemExistsInCart($itemID){
@@ -129,8 +131,16 @@
 
 		protected function delete($itemType, $id){
 			$dom = $this->connect();
-			$element = $dom->getElementById($id);
-			$dom->getElementsByTagName($itemType)->item(0)->removeChild($element);
+			$elementToRemove = null;
+			$elements = $dom->getElementsByTagName('itemID');
+			for ($i=0; $i < $elements->length; $i++) { 
+				if($elements->item($i)->nodeValue == $id){
+					$elementToRemove = $elements->item($i)->parentNode;
+					break;
+				}
+			}
+
+			$dom->getElementsByTagName($itemType)->item(0)->removeChild($elementToRemove);
 			$dom->save($this->filename);
 			$this->countItems();
 		}

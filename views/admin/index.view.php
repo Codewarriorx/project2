@@ -1,7 +1,7 @@
 <?php
 	class IndexView{
 		private $catalogEntities, $errors, $editFlag, $onSale, $postValues;
-		private $values = array('itemID' => '-1', 'name' => '', 'description' => '', 'price' => '', 'quantity' => '', 'salePrice' => '', 'image' => '', 'password' => '', 'onSale' => '');
+		private $values = array('id' => '-1', 'name' => '', 'description' => '', 'price' => '', 'quantity' => '', 'salePrice' => '', 'image' => '', 'password' => '', 'onSale' => '');
 
 		public function __construct($catalogEntities, $errors, $editFlag = -1, $onSale = false, $postValues = null){
 			$this->catalogEntities = $catalogEntities;

@@ -13,6 +13,7 @@
 		}
 
 		public function save(){
+			$id = null;
 			if(array_key_exists('save', $_POST)){ // Form has been submitted
 				foreach ($_POST as $field => $value){
 					$temp = trim($value);
@@ -31,32 +32,50 @@
 						$this->clean['image'] = 'coming_soon.jpg';
 					}
 
-					if(isset($_POST['itemID']) && $_POST['itemID'] != -1){
-						// editCatalog($clean, $_POST['itemID']);
-						echo "edit catalog";
+					if(isset($_POST['id']) && $_POST['id'] != -1){
+						// editCatalog($clean, $_POST['id']);
 						$catalogModel = new CatalogModel();
-						$catalogModel->updateCatalog($this->clean['name'], $this->clean['description'], $this->clean['price'], $this->clean['quantity'], $this->clean['image'], $this->clean['salePrice'], $this->clean['itemID']);
-						if(isset($this->clean['onSale'])){
-							// $salesModel = new SalesModel();
+						$salesModel = new SalesModel();
+
+						$catalogModel->updateCatalog($this->clean['name'], $this->clean['description'], $this->clean['price'], $this->clean['quantity'], $this->clean['image'], $this->clean['salePrice'], $this->clean['id']);
+						if(isset($this->clean['onSale'])){ // if on sale make sure its set
+							if( !$salesModel->onSale($this->clean['id']) ){
+								echo "put on sale";
+								$salesModel->putOnSale($this->clean['id']);
+							}
+						}
+						else{ // check to see if it was on sale and remove it
+							if( $salesModel->onSale($this->clean['id']) ){
+								echo "take off sale";
+								$salesModel->takeOffSale($this->clean['id']);
+							}
 						}
 					}
 					else{
 						//addToCatalog($clean);
-						echo "added to catalog";
 						$catalogModel = new CatalogModel();
-						$catalogModel->updateCatalog($this->clean['name'], $this->clean['description'], $this->clean['price'], $this->clean['quantity'], $this->clean['image'], $this->clean['salePrice']);
-						if(isset($this->clean['onSale'])){
-							// $salesModel = new SalesModel();
+						$salesModel = new SalesModel();
+
+						$id = $catalogModel->updateCatalog($this->clean['name'], $this->clean['description'], $this->clean['price'], $this->clean['quantity'], $this->clean['image'], $this->clean['salePrice']);
+						if(isset($this->clean['onSale'])){ // if on sale make sure its set
+							$id = "item_".$id;
+							$salesModel->putOnSale($id);
 						}
 					}
 				}
 			}
 
-			return $this->edit($_POST);
+			return $this->edit($_POST, $id);
 		}
 
-		public function edit($postValues = null){
-			$itemID = $_POST['itemID'];
+		public function edit($postValues = null, $id = null){
+			if($_POST['id'] == -1 && !is_null($id)){
+				$itemID = $id;
+			}
+			else{
+				$itemID = $_POST['id'];
+			}
+			
 			$catalogModel = new CatalogModel();
 			$catalogEntities = $catalogModel->getAll();
 

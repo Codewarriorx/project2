@@ -33,9 +33,13 @@
 			return $this->itemExistsOnSale($itemID);
 		}
 
-		public function putOnSale(){
+		public function putOnSale($itemID){
 			$entity = new SaleItem($itemID);
 			$this->updateXML($entity);
+		}
+
+		public function takeOffSale($itemID){
+			$this->delete('sales', $itemID);
 		}
 	}
 ?>
