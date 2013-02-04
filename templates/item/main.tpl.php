@@ -13,7 +13,7 @@
 		<span class="stock">Stock: <?php echo $values['quantity']; ?></span>
 		<p><?php echo $values['description']; ?></p>
 		<span class="priceBar">$<?php echo number_format($values['price'], 2, '.', ''); ?></span>
-		<form method="post" action="cart">
+		<form method="post" action="cart/addItem">
 			<input type="hidden" value="<?php echo $values['id']; ?>" name="itemID" >
 			<span class="quantity">Quantity:<input type="number" name="quantity" value="" placeholder="1"></span>
 			<input class="button addToCart" type="submit" value="Add To Cart" name="add" >

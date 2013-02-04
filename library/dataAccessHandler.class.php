@@ -4,7 +4,7 @@
 
 		public function __construct($filename){
 			$this->filename = $filename;
-			$lastInsertID = null;
+			$lastInsertID = 0;
 			$this->countItems();
 		}
 
@@ -19,7 +19,7 @@
 			return $dom;
 		}
 
-		protected function updateXML($entity){ // provides interface for adding and updat
+		protected function updateXML($entity){ // provides interface for adding and update
 			$dom = $this->connect();
 			$item = $dom->createElement('item');
 
@@ -42,16 +42,56 @@
 					$dom->getElementsByTagName('catalog')->item(0)->replaceChild($item, $oldItem);
 				}
 				else{ // create
-					$this->lastInsertID = count($items);
-					$item->setAttribute( 'id', $this->lastInsertID );
+					$this->countItems();
+					$id = $this->getItemCount();
+					$item->setAttribute( 'id', "item_".$id );
 					$dom->getElementsByTagName('catalog')->item(0)->appendChild($item);
 				}
 			}
 			elseif(get_class($entity) == "SaleItem"){
-				$dom->getElementsByTagName('sales')->item(0)->appendChild($item);
+				$itemID 	= $dom->createElement('itemID', $entity->getItemID());
+
+				$item->appendChild($itemID);
+
+				if(!is_null( $entity->getID() )){ // update
+					$oldItem = $dom->getElementById($entity->getID());
+					$item->setAttribute( 'id', $entity->getID() );
+					$dom->getElementsByTagName('sales')->item(0)->replaceChild($item, $oldItem);
+				}
+				else{ // create
+					$this->countItems();
+					$id = $this->getItemCount();
+					$item->setAttribute( 'id', "sale_".$id );
+					$dom->getElementsByTagName('sales')->item(0)->appendChild($item);
+				}
 			}
 			elseif(get_class($entity) == "CartItem"){
-				$dom->getElementsByTagName('cart')->item(0)->appendChild($item);
+				$itemID 	= $dom->createElement('itemID', "item_".$entity->getItemID());
+
+				$item->appendChild($itemID);
+				if(!is_null($this->itemExistsInCart($entity->getItemID()) )){ // update
+					echo "update";
+					$oldItem = $dom->getElementById( $this->itemExistsInCart($entity->getItemID()) );
+					$item->setAttribute( 'id', $this->itemExistsInCart($entity->getItemID()) );
+
+					$prevQuantity = $oldItem->getElementsByTagName('quantity')->item(0)->nodeValue;
+					$count = $prevQuantity + $entity->getCount();
+
+					$quantity = $dom->createElement('quantity', $count);
+					$item->appendChild($quantity);
+					
+					$dom->getElementsByTagName('cart')->item(0)->replaceChild($item, $oldItem);
+				}
+				else{ // create
+					$quantity = $dom->createElement('quantity', $entity->getCount());
+					$item->appendChild($quantity);
+					$this->countItems();
+					
+					$id = $this->getItemCount();
+					$item->setAttribute( 'id', "cart_".$id );
+					
+					$dom->getElementsByTagName('cart')->item(0)->appendChild($item);
+				}
 			}
 			
 			$dom->save($this->filename);
@@ -60,10 +100,24 @@
 			return $this->getLastInsertID();
 		}
 
-		protected function delete($id){
+		protected function itemExistsInCart($itemID){
+			$dom = $this->connect();
+			$items = $dom->getElementsByTagName('item');
+			for ($i=0; $i < $items->length; $i++) {
+				$node = $items->item($i);
+				$value = $node->getElementsByTagName('itemID')->item(0);
+				if($value->nodeValue == "item_".$itemID){
+					$parentNode = $value->parentNode;
+					return $parentNode->getAttribute('id');
+				}
+			}
+			return null;
+		}
+
+		protected function delete($itemType, $id){
 			$dom = $this->connect();
 			$element = $dom->getElementById($id);
-			$dom->getElementsByTagName('catalog')->item(0)->removeChild($element);
+			$dom->getElementsByTagName($itemType)->item(0)->removeChild($element);
 			$dom->save($this->filename);
 			$this->countItems();
 		}

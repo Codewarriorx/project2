@@ -18,5 +18,14 @@
 			}
 			return $listing;
 		}
+
+		public function addToCart($itemID, $quantity){
+			$cartEntity = new CartItem($itemID, $quantity);
+			$this->updateXML($cartEntity);
+		}
+
+		public function removeFromCart($cartID){
+			$this->delete('cart', $cartID);
+		}
 	}
 ?>

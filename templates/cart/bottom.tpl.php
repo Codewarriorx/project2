@@ -10,10 +10,11 @@
 </div>
 <div class="grid_6">
 	<div class="cartRight">
-		<form method="post" action="cart.php">
+			<input class="button" type="submit" value="Update Cart" name="add">
+		</form>
+		<form method="post" action="cart/emptyCart">
 			<input class="button" type="submit" value="Empty Cart" name="empty">
 		</form>
-		<input class="button" type="submit" value="Update Cart" name="add">
 		<div class="totals">
 			<span>Total</span><span>$<?php echo number_format($grandTotal, 2, '.', ''); ?></span>
 			<span>Tax</span><span>$<?php echo number_format($cartTax, 2, '.', ''); ?></span>
