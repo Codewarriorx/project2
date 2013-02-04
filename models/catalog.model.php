@@ -30,6 +30,9 @@
 			$listing = array();
 			for ($i=$lowerBound; $i < $upperBound; $i++) { 
 				$item = $this->read("item_$i");
+				if(is_null($item)){
+					continue;
+				}
 				$tempEntity = new CatalogItem($item['name'], $item['description'], $item['price'], $item['quantity'], $item['image'], $item['salePrice'], $item['id']);
 				array_push($listing, $tempEntity);
 			}
@@ -44,12 +47,19 @@
 
 		public function getAll(){
 			$listing = array();
-			for ($i=0; $i < $this->getItemCount(); $i++) { 
+			for ($i=0; $i <= $this->getLastInsertID(); $i++) { 
 				$item = $this->read("item_$i");
+				if(is_null($item)){
+					continue;
+				}
 				$tempEntity = new CatalogItem($item['name'], $item['description'], $item['price'], $item['quantity'], $item['image'], $item['salePrice'], $item['id']);
 				array_push($listing, $tempEntity);
 			}
 			return $listing;
+		}
+
+		public function updateItem($entity){
+			return $this->updateXML($entity);
 		}
 
 		public function updateCatalog($name, $description, $price, $quantity, $image, $salePrice, $id = null){

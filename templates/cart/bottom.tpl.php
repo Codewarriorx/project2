@@ -11,7 +11,7 @@
 <div class="grid_6">
 	<div class="cartRight">
 			<input class="button" type="submit" value="Update Cart" name="add">
-		</form>
+		<!-- </form> -->
 		<form method="post" action="cart/emptyCart">
 			<input class="button" type="submit" value="Empty Cart" name="empty">
 		</form>

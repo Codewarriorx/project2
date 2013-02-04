@@ -5,7 +5,7 @@
 		<div class="caption">
 			<h4><?php echo html_entity_decode($values['name']); ?></h4>
 			<p><?php echo html_entity_decode($this->itemDescriptionLimited($values['description'], 80)); ?></p>
-			<form method="post" action="cart">
+			<form method="post" action="cart/addItem">
 				<input type="hidden" value="<?php echo $values['id']; ?>" name="itemID">
 				<input class="button addToCart" type="submit" value="Add To Cart" name="add">
 			</form>

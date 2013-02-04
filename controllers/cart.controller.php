@@ -37,6 +37,13 @@
 				$cartModel = new CartModel();
 				$cartModel->addToCart($itemID, $quantity);
 
+				$catalogModel = new CatalogModel();
+				$entity = $catalogModel->getItem($itemID);
+				$left = $entity->getQuantity() - $quantity;
+				$entity->setQuantity($left);
+
+				$catalogModel->updateItem($entity);
+
 				return $this->index();
 			}
 		}
@@ -45,7 +52,19 @@
 			if(isset($_POST['cartID'])){
 				$cartID = $_POST['cartID'];
 				$cartModel = new CartModel();
-				$cartModel->removeFromCart($cartID);
+				$cartItem = $cartModel->getItem($cartID);
+				$itemID = $cartItem->getItemID();
+				$id = str_replace('item_', '', $itemID);
+				$quantity = $cartItem->getCount();
+
+				$catalogModel = new CatalogModel();
+				$entity = $catalogModel->getItem($id);
+				$left = $entity->getQuantity() + $quantity;
+				$entity->setQuantity($left);
+
+				$catalogModel->updateItem($entity);
+
+				$cartModel->removeFromCart($itemID);
 			}
 
 			return $this->index();
@@ -56,7 +75,17 @@
 				$cartModel = new CartModel();
 				$entities = $cartModel->getAll();
 				foreach ($entities as $entity) {
-					$cartModel->removeFromCart($entity->getID());
+					$itemID = $entity->getItemID();
+					$id = str_replace('item_', '', $itemID);
+					$quantity = $entity->getCount();
+
+					$catalogModel = new CatalogModel();
+					$catalogEntity = $catalogModel->getItem($id);
+					$left = $catalogEntity->getQuantity() + $quantity;
+					$catalogEntity->setQuantity($left);
+					$catalogModel->updateItem($catalogEntity);
+
+					$cartModel->removeFromCart($itemID);
 				}
 			}
 

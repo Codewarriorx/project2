@@ -21,8 +21,11 @@
 
 		public function getAll(){
 			$listing = array();
-			for ($i=0; $i < $this->getItemCount(); $i++) { 
+			for ($i=0; $i <= $this->getLastInsertID(); $i++) { 
 				$item = $this->read("sale_$i");
+				if(is_null($item)){
+					continue;
+				}
 				$tempEntity = new SaleItem($item['itemID'], $item['id']);
 				array_push($listing, $tempEntity);
 			}

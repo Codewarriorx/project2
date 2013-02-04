@@ -6,6 +6,9 @@
 			$this->filename = $filename;
 			$lastInsertID = 0;
 			$this->countItems();
+			if($this->itemCount != 0){
+				$this->setLastInsertID();
+			}
 		}
 
 		public function __destruct(){
@@ -24,7 +27,7 @@
 			$item = $dom->createElement('item');
 
 			if(get_class($entity) == "CatalogItem"){
-				$name 	= $dom->createElement('name', $entity->getName());
+				$name 			= $dom->createElement('name', $entity->getName());
 				$description 	= $dom->createElement('description', $entity->getDescription());
 				$price 			= $dom->createElement('price', $entity->getPrice());
 				$quantity 		= $dom->createElement('quantity', $entity->getQuantity());
@@ -39,14 +42,13 @@
 				$item->appendChild($salePrice);
 
 				if(!is_null( $entity->getID() )){ // update
-					echo $entity->getID();
 					$oldItem = $dom->getElementById($entity->getID());
 					$item->setAttribute( 'id', $entity->getID() );
 					$dom->getElementsByTagName('catalog')->item(0)->replaceChild($item, $oldItem);
 				}
 				else{ // create
 					$this->countItems();
-					$id = $this->getItemCount();
+					$id = $this->lastInsertID + 1;
 					$item->setAttribute( 'id', "item_".$id );
 					$dom->getElementsByTagName('catalog')->item(0)->appendChild($item);
 				}
@@ -63,7 +65,7 @@
 				}
 				else{ // create
 					$this->countItems();
-					$id = $this->getItemCount();
+					$id = $this->lastInsertID + 1;
 					$item->setAttribute( 'id', "sale_".$id );
 					$dom->getElementsByTagName('sales')->item(0)->appendChild($item);
 				}
@@ -73,7 +75,6 @@
 
 				$item->appendChild($itemID);
 				if(!is_null($this->itemExistsInCart($entity->getItemID()) )){ // update
-					echo "update";
 					$oldItem = $dom->getElementById( $this->itemExistsInCart($entity->getItemID()) );
 					$item->setAttribute( 'id', $this->itemExistsInCart($entity->getItemID()) );
 
@@ -90,7 +91,7 @@
 					$item->appendChild($quantity);
 					$this->countItems();
 					
-					$id = $this->getItemCount();
+					$id = $this->lastInsertID + 1;
 					$item->setAttribute( 'id', "cart_".$id );
 					
 					$dom->getElementsByTagName('cart')->item(0)->appendChild($item);
@@ -99,7 +100,7 @@
 			
 			$dom->save($this->filename);
 			$lastInsertID = $this->getItemCount();
-			$this->countItems();
+			$this->countItems();$this->setLastInsertID();
 
 			return $lastInsertID;
 		}
@@ -153,6 +154,9 @@
 			}
 			else{ // get single item
 				$results = $dom->getElementById($id);
+				if(is_null($results)){
+					return null;
+				}
 				$results = $this->nodeToArray($results);
 			}
 			
@@ -176,6 +180,14 @@
 			else{
 				return true;
 			}
+		}
+
+		private function setLastInsertID(){
+			$dom = $this->connect();
+			$lastItem = $dom->getElementsByTagName('item')->item($this->itemCount - 1);
+			$id = $lastItem->getAttribute('id');
+			$array = explode('_', $id);
+			$this->lastInsertID = $array[1];
 		}
 
 		protected function countItems(){

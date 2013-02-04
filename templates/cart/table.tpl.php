@@ -1,4 +1,4 @@
-<form action="cart/updateCart" method="post">
+<!-- <form action="cart/updateCart" method="post"> -->
 <div class="grid_12">
 	<table id="shoppingCart">
 		<thead>
