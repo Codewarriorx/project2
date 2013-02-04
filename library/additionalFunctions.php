@@ -1,6 +1,4 @@
 <?php
-	$password = 'project2';
-
 	function activePage($page='home'){
 		
 		if($page == PAGE){

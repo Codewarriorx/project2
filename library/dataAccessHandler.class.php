@@ -24,12 +24,14 @@
 			$item = $dom->createElement('item');
 
 			if(get_class($entity) == "CatalogItem"){
+				$name 	= $dom->createElement('name', $entity->getName());
 				$description 	= $dom->createElement('description', $entity->getDescription());
 				$price 			= $dom->createElement('price', $entity->getPrice());
 				$quantity 		= $dom->createElement('quantity', $entity->getQuantity());
 				$image 			= $dom->createElement('image', $entity->getImage());
 				$salePrice 		= $dom->createElement('salePrice', $entity->getSalePrice());
 
+				$item->appendChild($name);
 				$item->appendChild($description);
 				$item->appendChild($price);
 				$item->appendChild($quantity);
@@ -49,7 +51,7 @@
 				}
 			}
 			elseif(get_class($entity) == "SaleItem"){
-				$itemID 	= $dom->createElement('itemID', $entity->getItemID());
+				$itemID = $dom->createElement('itemID', $entity->getItemID());
 
 				$item->appendChild($itemID);
 
@@ -66,7 +68,7 @@
 				}
 			}
 			elseif(get_class($entity) == "CartItem"){
-				$itemID 	= $dom->createElement('itemID', "item_".$entity->getItemID());
+				$itemID = $dom->createElement('itemID', "item_".$entity->getItemID());
 
 				$item->appendChild($itemID);
 				if(!is_null($this->itemExistsInCart($entity->getItemID()) )){ // update
@@ -112,6 +114,17 @@
 				}
 			}
 			return null;
+		}
+
+		protected function itemExistsOnSale($itemID){
+			$dom = $this->connect();
+			$items = $dom->getElementsByTagName('itemID');
+			for ($i=0; $i < $items->length; $i++) {
+				if($items->item($i)->nodeValue == $itemID){
+					return true;
+				}
+			}
+			return false;
 		}
 
 		protected function delete($itemType, $id){

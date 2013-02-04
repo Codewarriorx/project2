@@ -18,5 +18,24 @@
 			}
 			return $listing;
 		}
+
+		public function getAll(){
+			$listing = array();
+			for ($i=0; $i < $this->getItemCount(); $i++) { 
+				$item = $this->read("sale_$i");
+				$tempEntity = new SaleItem($item['itemID'], $item['id']);
+				array_push($listing, $tempEntity);
+			}
+			return $listing;
+		}
+
+		public function onSale($itemID){
+			return $this->itemExistsOnSale($itemID);
+		}
+
+		public function putOnSale(){
+			$entity = new SaleItem($itemID);
+			$this->updateXML($entity);
+		}
 	}
 ?>

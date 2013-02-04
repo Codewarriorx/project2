@@ -41,5 +41,20 @@
 			$item = $this->read($itemID);
 			return new CatalogItem($item['name'], $item['description'], $item['price'], $item['quantity'], $item['image'], $item['salePrice'], $item['id']);
 		}
+
+		public function getAll(){
+			$listing = array();
+			for ($i=0; $i < $this->getItemCount(); $i++) { 
+				$item = $this->read("item_$i");
+				$tempEntity = new CatalogItem($item['name'], $item['description'], $item['price'], $item['quantity'], $item['image'], $item['salePrice'], $item['id']);
+				array_push($listing, $tempEntity);
+			}
+			return $listing;
+		}
+
+		public function updateCatalog($name, $description, $price, $quantity, $image, $salePrice, $id = null){
+			$catalogEntity = new CatalogItem($name, $description, $price, $quantity, $image, $salePrice, $id);
+			$this->updateXML($catalogEntity);
+		}
 	}
 ?>
