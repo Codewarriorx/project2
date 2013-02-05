@@ -27,8 +27,11 @@
 			$items = "";
 			$pagination = "";
 			foreach ($entityList as $entity) {
-				ob_start();
 				$values = $entity->toArray();
+				ob_start();
+				if($pageType == "salePage"){
+					$values['price'] = $values['salePrice'];
+				}
 				include("templates/index/mainItem.tpl.php");
 				$content = ob_get_clean();
 				$items .= $content;

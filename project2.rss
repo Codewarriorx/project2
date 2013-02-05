@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+	<channel>
+		<title>Project2 RSS Feed</title>
+		<language>en-us</language>
+		<link>http://www.ist.rit.edu/~bdf/539/project2/project2.rss</link>
+		<description>Project 2 RSS Feed</description>
+
+		<item>
+			<title>Pretty Flower Coffee Mug</title>
+			<link>http://www.ist.rit.edu/~bdf/539/project2/index.php?item=0</link>
+			<description><![CDATA[A pretty coffee mug with a flower design on a white background.]]></description>
+			<price>6.50</price>
+			<salePrice>4.50</salePrice>
+			<pubDate>Sat, 20 Oct 2012 16:47:38 GMT</pubDate>
+		</item>
+	</channel>
+</rss>

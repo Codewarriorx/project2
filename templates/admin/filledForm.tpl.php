@@ -4,7 +4,7 @@
 <div class="clear"></div>
 
 <div class="grid_12">
-	<form method="POST" action="admin/save">
+	<form method="POST" action="admin/save" enctype="multipart/form-data">
 		<div class="grid_6 alpha grid_together">
 			<div class="adminForm">
 				<input type="hidden" name="id" value="<? echo $values['id']; ?>"/>

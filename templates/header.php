@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="css/reset.css" />
 		<link rel="stylesheet" href="css/text.css" />
 		<link rel="stylesheet" href="css/960.css" />
+		<link rel="stylesheet" href="css/chosen.css" />
 		<link href="js/jquery.shadow/jquery.shadow.css" rel="stylesheet">
 
 		<link href='http://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
