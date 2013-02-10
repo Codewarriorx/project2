@@ -94,7 +94,7 @@ h1{
 	color: #51565D;
 	display: block;
 	margin: 0;
-	padding: 50px 40px 10px;
+	padding: 50px 35px 10px;
 
 	transition:All .6s ease;
 	-webkit-transition:All .6s ease;
@@ -107,18 +107,18 @@ h1{
 }
 
 .nav li img{
-	margin: 20px 45px;
+	margin: 20px 40px;
     opacity: 0.6;
     position: absolute;
     pointer-events: none;
 }
 
 .nav li:nth-child(2) img, .nav li:nth-child(3) img{
-	margin: 20px 42px;
+	margin: 20px 38px;
 }
 
 .nav li:nth-child(4) img{
-	margin: 20px 48px;
+	margin: 20px 50px;
 }
 
 .section{

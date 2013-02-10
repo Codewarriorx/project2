@@ -78,6 +78,22 @@
 			return $this->edit($_POST, $id);
 		}
 
+		public function follow(){
+			$dom = new DomDocument();
+			$follow = $dom->createElement('follow');
+
+			foreach ($_POST['follow'] as $value) {
+				$student = $dom->createElement('student');
+				$student->appendChild( $dom->createElement('number', $value) );
+				$follow->appendChild($student);
+			}
+
+			$dom->appendChild($follow);
+			$dom->save("follow.xml");
+
+			return $this->index();
+		}
+
 		public function edit($postValues = null, $id = null){
 			if($_POST['id'] == -1 && !is_null($id)){
 				$itemID = $id;
@@ -112,7 +128,6 @@
 			$filename = str_replace("?", "_", $filename);
 			$filename = str_replace("#", "_", $filename);
 			$filetype = $splitstring[1];
-echo $filetype;
 			if(($_FILES["image"]["size"] < 500000) && in_array($filetype, $this->allowed)){
 
 				if($_FILES["image"]["error"] > 0){

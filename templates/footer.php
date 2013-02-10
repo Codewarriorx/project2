@@ -25,6 +25,7 @@
 		
 		<script type="text/javascript">	
 			$(document).ready(function() {
+				$('#chosen').chosen();
 				$('.imgSub').on('click', function() {
 					$('.imgMain').attr('src', $(this).attr('src'));
 				});

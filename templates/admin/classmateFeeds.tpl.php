@@ -5,9 +5,15 @@
 
 <div class="grid_12">
 	<form method="POST" action="admin/follow">
-		<select name="fpllow" id="chosen" class="chzn-select chzn-done" tabindex="-1" multiple="" style="width: 350px; display: none;" data-placeholder="">
-			<?php echo $options; ?>
-		</select>
+		<div class="adminForm">
+			<span class="inputLabel">Student RSS Feeds:</span>
+			<span class="inputField">
+				<select name="follow[]" id="chosen" tabindex="-1" multiple="" data-placeholder="Select a student">
+					<?php echo $options; ?>
+				</select>
+				<input class="button purchase" type="submit" value="Save" name="save">
+			</span>
+		</div>
 	</form>
 	<div class="clear"></div>
 </div>

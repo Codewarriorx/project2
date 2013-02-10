@@ -92,6 +92,10 @@
 			return $this->index();
 		}
 
+		public function purchase(){
+			return $this->emptyCart();
+		}
+
 		public function updateCart(){
 			// $itemIDs = $_POST['itemID'];
 			// $quantities = $_POST['quantity'];
